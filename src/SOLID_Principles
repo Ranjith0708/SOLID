@@ -1,0 +1,32 @@
+
+| Principle | Stands for                          | What It Means                                                               | Example in Practice                                                                          |
+| --------- | ----------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **S**     | **Single Responsibility Principle** | A class should have only **one reason to change**.                          | Split `InvoiceManager` into `Invoice`, `InvoicePrinter`, and `InvoiceRepository`.            |
+| **O**     | **Open/Closed Principle**           | Classes should be **open for extension**, but **closed for modification**.  | Add new report types (PDF, Excel) without touching existing code — use `Report` interface.   |
+| **L**     | **Liskov Substitution Principle**   | Subtypes should be **fully substitutable** for their base types.            | Don't make `Square extends Rectangle` if it changes behavior. Use `Shape` interface instead. |
+| **I**     | **Interface Segregation Principle** | Don’t force a class to implement **unused interfaces**.                     | Break `Machine` into `Printer`, `Scanner`, `Fax`.                                            |
+| **D**     | **Dependency Inversion Principle**  | High-level modules should depend on **abstractions**, not concrete classes. | `Application` depends on `Database` interface, not `MySQLDatabase`.                          |
+
+
+Quick Code Template :
+    SRP :
+        class Invoice {}
+        class InvoicePrinter {}
+        class InvoiceSaver {}
+    OCP :
+        interface Report { void generate(); }
+        class PDFReport implements Report { ... }
+    LSP :
+        interface Shape { int getArea(); }
+        class Rectangle implements Shape { ... }
+        class Square implements Shape { ... }
+    ISP :
+        interface Printer { void print(); }
+        interface Scanner { void scan(); }
+    DIP :
+        interface Database { void connect(); }
+        class App {
+            Database db;
+            App(Database db) { this.db = db; }
+        }
+
