@@ -1,5 +1,10 @@
 package LSP;
 
+/*
+If class B is a subtype of class A, then A's methods should work with B
+without knowing it’s actually dealing with B.
+LSP ensures inheritance is used properly.
+*/
 public class Main {
     public static void main(String[] args) {
         RectangleVio rectangleVio = new SquareVio();
